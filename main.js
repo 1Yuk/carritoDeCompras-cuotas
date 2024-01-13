@@ -4,9 +4,11 @@ let total = 0;
 let seleccion;
 
 const productos = [
-    { id: 1, nombre: '43" UHD 4K Smart TV', marca: 'Samsung', precio: 540000 },
-    { id: 2, nombre: 'Galaxy A23', marca: 'Samsung', precio: 365000 },
-    { id: 3, nombre: 'Notebook Vivobook 15', marca: 'Asus', precio: 445000 },
+    { id: 1, nombre: '43" UHD 4K Smart TV', marca: '📺Samsung', precio: 540000 },
+    { id: 2, nombre: 'Galaxy A23', marca: '📱Samsung', precio: 365000 },
+    { id: 3, nombre: 'Notebook Vivobook 15', marca: '💻Asus', precio: 445000 },
+    { id: 4, nombre: '13 Pro Max', marca: '📱Iphone', precio: 220500 },
+    { id: 5, nombre: 'Reloj Smartwatch', marca: '⌚Noganet', precio: 30500 },
 ];
 
 const cuotasDisponibles = [
