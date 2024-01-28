@@ -1,4 +1,4 @@
- /* ---------------------- Inicio del carrito de compras --------------------- */
+/* ---------------------- Inicio del carrito de compras --------------------- */
 let carrito = [];
 let total = 0;
 let seleccion;
@@ -98,6 +98,7 @@ function calcularCuotas() {
 while (true) {
     seleccion = prompt(`Seleccione una acción: \n 1. Agregar producto al carrito 🛒\n 2. Hacer el pago en cuotas 🔢\n 3. Salir ❌\n`);
 
+    
     if (seleccion === null || isNaN(seleccion)) {
         alert('Entrada no válida. Inténtelo de nuevo. ❌');
     }

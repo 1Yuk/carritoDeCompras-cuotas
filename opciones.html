@@ -1,0 +1,74 @@
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Detalles de Productos</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Producto 1</td>
+                        <td>Descripción del producto.</td>
+                        <td>$XX.XX</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="eliminarProducto(1)">Eliminar</button>
+                        </td>
+                    </tr>
+
+                    <!-- Repite las filas para cada producto -->
+
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <!-- Botón Comprar dentro del modal -->
+            <button class="btn btn-success" data-bs-target="#compraModal" data-bs-toggle="modal">Comprar</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal para comprar -->
+<div class="modal fade" id="compraModal" aria-hidden="true" aria-labelledby="compraModalLabel" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="compraModalLabel">Opciones de Compra</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- Agrega opciones para comprar en cuotas, formulario de pago, etc. -->
+            <p>Opciones de pago:</p>
+            <label>
+                <input type="radio" name="formaPago" value="contado"> Pago al contado
+            </label>
+            <label>
+                <input type="radio" name="formaPago" value="cuotas"> Pago en cuotas
+            </label>
+            <!-- Agrega más detalles según tus necesidades -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success">Realizar Pago</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Abrir modal de productos</button>
+
+
+
+

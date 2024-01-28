@@ -2,21 +2,181 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BlazeTech - Shop</title>
+    <!-- ----------------------- BOOTSTRAP CSS ------------------------ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/blaze.webp" type="icon/webp">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="assets/js.png" type="js/png">
-    <title>Carrito de compras + cuotas</title>
+    <!-- ----------------------------- FONTAWESOME ----------------------------- -->
+    <script src="https://kit.fontawesome.com/201f492e52.js" crossorigin="anonymous"></script>
+    <!-- <script src="main.js" defer></script> -->
+    <script src="products.js" defer></script>
 </head>
 <body>
-    <section class="contenedor">
-        <article class="box">
-            <h1>Carrito de compras 🛒</h1>
+<!-- -------------------------- INICIO DEL NAVBAR -------------------------- -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+    <section class="container">
+        <a class="navbar-brand" href="#">BlazeTech</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <article class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#categorias">Categorías</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#modal1" href="#carrito">
+                        <i class="fas fa-shopping-cart text-light"></i>
+                        <span class="badge rounded-pill bg-light text-dark">0</span> 
+                    </a>
+                </li>
+            </ul>
         </article>
-        <article class="box">
-            <h2>sumador de cuotas 🔢</h2>
-        </article>
-    </section>
-    <script src="main.js"></script>
-</body>
 
+        <section class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+            <section class="modal-dialog modal-lg">
+                <article class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal1Label">Modal 1</h4>
+                    </div>
+                    <article class="modal-body">
+                        <h5>Producto</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Nombre</th>
+                                    <th>Marca</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img class="icon-product" src="assets/js.png" alt="#"></td>
+                                    <td>Producto 1</td>
+                                    <td>Redragon</td>
+                                    <td>Electrónico</td>
+                                    <td>$19.99</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-success mt-3">Comprar</button>
+                        <button type="button" class="btn btn-danger mt-3 ms-2 float-end" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary mt-3 float-end" data-bs-toggle="modal" data-bs-target="#modal2" data-bs-dismiss="modal">Pagar en Cuotas</button>
+                    </article>
+                </article>
+            </section>
+        </section>
+
+        <section class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+            <section class="modal-dialog modal-lg">
+                <article class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal2Label">Modal 2</h4>
+                    </div>
+                    <article class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Interés</th>
+                                    <th>P/F con Interés</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img class="icon-product" src="assets/js.png" alt="#"></td>
+                                    <td>Producto 1</td>
+                                    <td>$100.00</td>
+                                    <td>5%</td>
+                                    <td>$105.00</td>
+                                    <td>
+                                        <button class="btn btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-success mt-3">Comprar</button>
+                        <button type="button" class="btn btn-danger mt-3 ms-2 float-end" data-bs-dismiss="modal">Cerrar</button>
+                    </article>
+                </article>
+            </section>
+        </section>
+    </section>
+</nav>
+<!-- ----------------------- INICIO DEL MAIN CONTENT ----------------------- -->
+<main class="container-fluid">
+    <section class="row">
+        <!-- ------------------ INCIO DEL ASIDE PARA LOS FILTROS ------------------- -->
+        <aside class="col-md-3 bg-light p-3" style="height: 100vh;">
+            <section>
+                <h5>Filtrado</h5>
+                <article class="form-check">
+                    <input class="form-check-input bg-warning" type="checkbox" id="filtradoAZ">
+                    <label class="form-check-label" for="filtradoAZ">A-Z</label>
+                </article>
+                <article class="form-check">
+                    <input class="form-check-input bg-warning" type="checkbox" id="filtradoEnvioGratis">
+                    <label class="form-check-label" for="filtradoEnvioGratis">Envío Gratis</label>
+                </article>
+                <article class="form-check">
+                    <input class="form-check-input bg-warning" type="checkbox" id="filtradoLlegaHoy">
+                    <label class="form-check-label" for="filtradoLlegaHoy">Llega Hoy</label>
+                </article>
+            </section>
+            <hr>
+            <section>
+                <h5>Marcas</h5>
+                <article class="form-check">
+                    <input class="form-check-input bg-warning" type="checkbox" id="marcaRedragon">
+                    <label class="form-check-label" for="marcaRedragon">Redragon</label>
+                </article>
+                <article class="form-check">
+                    <input class="form-check-input bg-warning" type="checkbox" id="marcaLogitech">
+                    <label class="form-check-label" for="marcaLogitech">Logitech</label>
+                </article>
+                <article class="form-check">
+                    <input class="form-check-input bg-warning" type="checkbox" id="marcaHyperX">
+                    <label class="form-check-label" for="marcaHyperX">HyperX</label>
+                </article>
+            </section>
+            <hr>
+            <section>
+                <h5>Rango de precio</h5>
+                <article class="mb-3">
+                    <label for="precioRange" class="form-label"></label>
+                    <input type="range" class="form-range" id="precioRange" value="0" step="1">
+                </article>
+                <p>Precio seleccionado: <span id="precioOutput">0</span></p>
+            </section>
+            <button type="button" class="btn btn-warning">Aplicar Filtros</button>
+        </aside>
+
+        <!-- ----------- INICIO DE LA BARRA DE BUSQUEDA Y LAS CATEGORÍAS ----------- -->
+        <section class="col-md-9">
+            <section class="container mt-3" id="categoria-container"></section>
+            <!-- ---------------- INICIO DE LOS PRODUCTOS DE LA TIENDA ----------------- -->
+            <div class="container mt-3">
+                <div class="row" id="productos-container"></div>
+            </div>
+        </section>
+    </section>
+</main>
+<!-- --------------------- BOOTSTRAP JS Y DEPENDENCIAS --------------------- -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
