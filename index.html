@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="style.css">
     <!-- ----------------------------- FONTAWESOME ----------------------------- -->
     <script src="https://kit.fontawesome.com/201f492e52.js" crossorigin="anonymous"></script>
-    <script src="script.js" defer></script>
+    <!-- <script src="script.js" defer></script> -->
     <script src="products.js" defer></script>
 </head>
 <body>
 <!-- -------------------------- INICIO DEL NAVBAR -------------------------- -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #171c21 !important;">
     <section class="container">
         <a class="navbar-brand" href="#">BlazeTech</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -33,7 +33,7 @@
                 <li class="nav-item">
                     <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#modal1" href="#carrito">
                         <i class="fas fa-shopping-cart text-light"></i>
-                        <span class="badge rounded-pill bg-light text-dark">0</span> 
+                        <span class="badge rounded-pill bg-light text-dark" id="carrito-cantidad">0</span> 
                     </a>
                 </li>
             </ul>
@@ -57,9 +57,7 @@
                                     <th>Eliminar</th>
                                 </tr>
                             </thead>
-                            <tbody id="cart-body">
-                                <!-- La tabla del carrito se llenará dinámicamente aquí -->
-                            </tbody>
+                            <tbody id="cart-body"> </tbody>
                         </table>
                         <button type="button" class="btn btn-success mt-3" id="comprar-btn">Comprar</button>
                         <button type="button" class="btn btn-danger mt-3 ms-2 float-end" data-bs-dismiss="modal">Cerrar</button>
@@ -112,19 +110,19 @@
 <main class="container-fluid">
     <section class="row">
         <!-- ------------------ INCIO DEL ASIDE PARA LOS FILTROS ------------------- -->
-        <aside class="col-md-3 bg-light p-3" style="height: 100vh;">
+        <aside class="col-md-3 bg-light p-3">
             <section>
                 <h5>Filtrado</h5>
                 <article class="form-check">
-                    <input class="form-check-input bg-warning" type="checkbox" id="filtradoAZ">
+                    <input class="form-check-input" type="checkbox" id="filtradoAZ">
                     <label class="form-check-label" for="filtradoAZ">A-Z</label>
                 </article>
                 <article class="form-check">
-                    <input class="form-check-input bg-warning" type="checkbox" id="filtradoEnvioGratis">
+                    <input class="form-check-input" type="checkbox" id="filtradoEnvioGratis">
                     <label class="form-check-label" for="filtradoEnvioGratis">Envío Gratis</label>
                 </article>
                 <article class="form-check">
-                    <input class="form-check-input bg-warning" type="checkbox" id="filtradoLlegaHoy">
+                    <input class="form-check-input" type="checkbox" id="filtradoLlegaHoy">
                     <label class="form-check-label" for="filtradoLlegaHoy">Llega Hoy</label>
                 </article>
             </section>
@@ -132,15 +130,15 @@
             <section>
                 <h5>Marcas</h5>
                 <article class="form-check">
-                    <input class="form-check-input bg-warning" type="checkbox" id="marcaRedragon">
+                    <input class="form-check-input" type="checkbox" id="marcaRedragon">
                     <label class="form-check-label" for="marcaRedragon">Redragon</label>
                 </article>
                 <article class="form-check">
-                    <input class="form-check-input bg-warning" type="checkbox" id="marcaLogitech">
+                    <input class="form-check-input" type="checkbox" id="marcaLogitech">
                     <label class="form-check-label" for="marcaLogitech">Logitech</label>
                 </article>
                 <article class="form-check">
-                    <input class="form-check-input bg-warning" type="checkbox" id="marcaHyperX">
+                    <input class="form-check-input" type="checkbox" id="marcaHyperX">
                     <label class="form-check-label" for="marcaHyperX">HyperX</label>
                 </article>
             </section>
@@ -153,7 +151,7 @@
                 </article>
                 <p>Precio seleccionado: <span id="precioOutput">0</span></p>
             </section>
-            <button type="button" class="btn btn-warning">Aplicar Filtros</button>
+            <button type="button" class="btn btn-primary">Aplicar Filtros</button>
         </aside>
 
         <!-- ----------- BARRA DE BUSQUEDA Y LAS CATEGORÍAS ----------- -->

@@ -1,3 +1,6 @@
+body {
+    background-color: #212529 !important;
+}
 .navbar-brand {
     font-size: 1.6rem;
     font-weight: bold;
@@ -9,36 +12,28 @@
 .btn:focus {
     box-shadow: none !important;
 }
+.colorTexto {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
 #filtradoAZ,
 #filtradoEnvioGratis,
 #filtradoLlegaHoy,
 #marcaRedragon,
 #marcaLogitech,
 #marcaHyperX{
-    border: 1px solid #000000;
-    padding: 5px;
-    transition: border-color 0.3s;
     box-shadow: none;
 }
-#filtradoAZ:focus,
-#filtradoEnvioGratis:focus,
-#filtradoLlegaHoy:focus,
-#marcaRedragon:focus,
-#marcaLogitech:focus,
-#marcaHyperX:focus{
-    border-color: #000000;
+
+::-webkit-scrollbar {
+    width: 8px; 
 }
-#precioRange::-webkit-slider-thumb {
-    background-color: #ffc107;
+::-webkit-scrollbar-thumb {
+    background-color: rgb(51, 51, 51); 
 }
-#barraBusqueda, 
-#categoria {
-    border: 1px solid #ffc107;
-    padding: 5px;
-    transition: border-color 0.3s;
-    box-shadow: none;
-}
-#barraBusqueda:focus, 
-#categoria:focus {
-    border-color: #ffc107;
+
+::-webkit-scrollbar-track {
+    background-color: rgb(241, 241, 241);
 }
