@@ -10,15 +10,7 @@ const productos = [
 ];
 
 const carrito = [];
-
-const agregarAlCarrito = (productoIndex) => {
-    const producto = productos[productoIndex];
-
-    if (producto && typeof producto.precio === 'number') {
-        carrito.push(producto);
-        actualizarCarrito();
-    }
-};
+const agregarAlCarrito = (productoIndex) => (producto = productos[productoIndex]) && typeof producto.precio === 'number' ? (carrito.push(producto), actualizarCarrito()) : null;
 
 const actualizarCarrito = () => {
     const tablaCarrito = document.querySelector('#cart-body');
@@ -38,27 +30,28 @@ const actualizarCarrito = () => {
         `;
         tablaCarrito.innerHTML += modal;
     });
-
     cantidadCarrito.textContent = carrito.length;
 };
 
-// const comprar = () => {
-//     alert("Compra realizada. Total: $" + calcularTotal());
-// };
-
-// const calcularTotal = () => {
-//     return carrito.reduce((total, producto) => total + producto.precio, 0);
-// };
-
-const eliminarDelCarrito = (eliminarIndex) => {
-    if (carrito[eliminarIndex]) {
-        carrito.splice(eliminarIndex, 1);
-        actualizarCarrito();
-    }
+const comprar = () => {
+    const totalGasto = carrito.reduce((total, producto) => total + producto.precio, 0);
+    const formateadaTotal = formatearNumero(totalGasto, 3);
+    Swal.fire({
+        title: 'Compra realizada!',
+        icon: 'success',
+        text: `El costo total del gasto es: $${formateadaTotal}`
+    });
+    carrito.length = 0;
+    actualizarCarrito();
 };
+
+const formatearNumero = (numero, decimales) => { return numero.toFixed(decimales).replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
+const eliminarDelCarrito = (eliminarIndex) => 
+carrito[eliminarIndex] ? (carrito.splice(eliminarIndex, 1), actualizarCarrito()) : null;
 
 const mostrarProductos = (producto, productoIndex) => {
     const container = document.querySelector('#productos-container');
+
     container.innerHTML += /*html*/ `
         <div class="col-md-3 mb-3">
             <div class="card h-100">
@@ -79,21 +72,17 @@ const filtrarProductos = () => {
     const textoBusqueda = document.querySelector('#barraBusqueda').value.toLowerCase();
     const container = document.querySelector('#productos-container');
     container.innerHTML = '';
-
     const productosFiltrados = productos.filter(producto => 
         (categoriaSeleccionada === 'Todos' || producto.categoria === categoriaSeleccionada) &&
         (producto.marca.trim().toLowerCase().includes(textoBusqueda) || producto.nombre.toLowerCase().includes(textoBusqueda))
     );
-
-    productosFiltrados.forEach((producto, index) => {
-        mostrarProductos(producto, index);
-    });
+    productosFiltrados.forEach((producto, index) => { mostrarProductos(producto, index); });
 };
 
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector('#productos-container');
     const categoriaContainer = document.querySelector('#categoria-container');
-
+    
     categoriaContainer.innerHTML += /*html*/ `
         <article class="row">
             <div class="col-md-6">

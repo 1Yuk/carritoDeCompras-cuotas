@@ -1,5 +1,8 @@
 body {
-    background-color: #212529 !important;
+    background-color: #212529;
+}
+nav {
+    background-color: #171c21;
 }
 .navbar-brand {
     font-size: 1.6rem;
