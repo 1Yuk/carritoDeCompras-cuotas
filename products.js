@@ -5,8 +5,8 @@ const productos = [
     { marca: 'HyperX', nombre: 'Cloud II Wireless HHSC2X-BA', categoria: 'Auriculares', precio: 329.999, imagen: './assets/hyperxAuriculares.webp' },
     { marca: 'Logitech', nombre: 'G Series G733 KDA', categoria: 'Auriculares', precio: 195.999, imagen: './assets/logitechAuriculares.webp' },
     { marca: 'Samsung', nombre: 'Monitor G4 25" 240hz 1ms', categoria: 'Pantallas', precio: 438.629, imagen: './assets/samsungMonitor-1.webp' },
-    { marca: 'Asus', nombre: 'Monitor Vg248qg Pantalla 24" 240hz 3ms', categoria: 'Pantallas', precio: 269.999, imagen: '/assets/asusMonitor-1.webp' },
-    { marca: 'Asus TUF', nombre: 'Monitor curvo VG24VQE Pantalla 23.6" 144hz 1ms', categoria: 'Pantallas', precio: 387.333, imagen: '/assets/asusMonitor-2.webp' }
+    { marca: 'Asus', nombre: 'Monitor Vg248qg Pantalla 24" 240hz 3ms', categoria: 'Pantallas', precio: 269.999, imagen: './assets/asusMonitor-1.webp' },
+    { marca: 'Asus TUF', nombre: 'Monitor curvo VG24VQE Pantalla 23.6" 144hz 1ms', categoria: 'Pantallas', precio: 387.333, imagen: './assets/asusMonitor-2.webp' }
 ];
 
 const carrito = [];
@@ -46,8 +46,7 @@ const comprar = () => {
 };
 
 const formatearNumero = (numero, decimales) => { return numero.toFixed(decimales).replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
-const eliminarDelCarrito = (eliminarIndex) => 
-carrito[eliminarIndex] ? (carrito.splice(eliminarIndex, 1), actualizarCarrito()) : null;
+const eliminarDelCarrito = (eliminarIndex) => carrito[eliminarIndex] ? (carrito.splice(eliminarIndex, 1), actualizarCarrito()) : null;
 
 const mostrarProductos = (producto, productoIndex) => {
     const container = document.querySelector('#productos-container');
@@ -82,7 +81,7 @@ const filtrarProductos = () => {
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector('#productos-container');
     const categoriaContainer = document.querySelector('#categoria-container');
-    
+
     categoriaContainer.innerHTML += /*html*/ `
         <article class="row">
             <div class="col-md-6">
