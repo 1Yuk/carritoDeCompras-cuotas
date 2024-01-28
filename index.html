@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- ----------------------------- FONTAWESOME ----------------------------- -->
     <script src="https://kit.fontawesome.com/201f492e52.js" crossorigin="anonymous"></script>
-    <!-- <script src="main.js" defer></script> -->
+    <script src="script.js" defer></script>
     <script src="products.js" defer></script>
 </head>
 <body>
@@ -40,13 +40,12 @@
         </article>
 
         <section class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
-            <section class="modal-dialog modal-lg">
-                <article class="modal-content">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="modal1Label">Modal 1</h4>
+                        <h4 class="modal-title" id="modal1Label">Carrito de Compras</h4>
                     </div>
-                    <article class="modal-body">
-                        <h5>Producto</h5>
+                    <div class="modal-body">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -58,25 +57,16 @@
                                     <th>Eliminar</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td><img class="icon-product" src="assets/js.png" alt="#"></td>
-                                    <td>Producto 1</td>
-                                    <td>Redragon</td>
-                                    <td>Electrónico</td>
-                                    <td>$19.99</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">Eliminar</button>
-                                    </td>
-                                </tr>
+                            <tbody id="cart-body">
+                                <!-- La tabla del carrito se llenará dinámicamente aquí -->
                             </tbody>
                         </table>
-                        <button type="button" class="btn btn-success mt-3">Comprar</button>
+                        <button type="button" class="btn btn-success mt-3" id="comprar-btn">Comprar</button>
                         <button type="button" class="btn btn-danger mt-3 ms-2 float-end" data-bs-dismiss="modal">Cerrar</button>
                         <button type="button" class="btn btn-primary mt-3 float-end" data-bs-toggle="modal" data-bs-target="#modal2" data-bs-dismiss="modal">Pagar en Cuotas</button>
-                    </article>
-                </article>
-            </section>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
@@ -166,12 +156,15 @@
             <button type="button" class="btn btn-warning">Aplicar Filtros</button>
         </aside>
 
-        <!-- ----------- INICIO DE LA BARRA DE BUSQUEDA Y LAS CATEGORÍAS ----------- -->
+        <!-- ----------- BARRA DE BUSQUEDA Y LAS CATEGORÍAS ----------- -->
+
         <section class="col-md-9">
-            <section class="container mt-3" id="categoria-container"></section>
-            <!-- ---------------- INICIO DE LOS PRODUCTOS DE LA TIENDA ----------------- -->
+            <section class="container mt-3" id="categoria-container"> </section>
+
+            <!-- ---------------- PRODUCTOS DE LA TIENDA ----------------- -->
+
             <div class="container mt-3">
-                <div class="row" id="productos-container"></div>
+                <div class="row" id="productos-container"> </div>
             </div>
         </section>
     </section>
