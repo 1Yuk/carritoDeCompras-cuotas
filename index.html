@@ -11,158 +11,37 @@
     <!-- ----------------------------- FONTAWESOME ----------------------------- -->
     <script src="https://kit.fontawesome.com/201f492e52.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <script src="script.js" defer></script> -->
     <script src="products.js" defer></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
-<!-- -------------------------- INICIO DEL NAVBAR -------------------------- -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <section class="container">
-        <a class="navbar-brand" href="#">BlazeTech</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <article class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#modal1" href="#carrito">
-                        <i class="fas fa-shopping-cart text-light"></i>
-                        <span class="badge rounded-pill bg-light text-dark" id="carrito-cantidad">0</span> 
-                    </a>
-                </li>
-            </ul>
-        </article>
-
-        <section class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="modal1Label">Carrito de Compras</h4>
+    <!-- ------------------------- LOGIN DEL ECOMMERCE ------------------------- -->
+    <main class="container mt-5">
+        <section class="row justify-content-center">
+            <section class="col-md-6">
+                <article class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Inicio de Sesión</h3>
                     </div>
-                    <div class="modal-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Foto</th>
-                                    <th>Nombre</th>
-                                    <th>Marca</th>
-                                    <th>Categoría</th>
-                                    <th>Precio</th>
-                                    <th>Eliminar</th>
-                                </tr>
-                            </thead>
-                            <tbody id="cart-body"> </tbody>
-                        </table>
-                        <button type="button" class="btn btn-success mt-3" id="comprar-btn">Comprar</button>
-                        <button type="button" class="btn btn-danger mt-3 ms-2 float-end" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary mt-3 float-end" data-bs-toggle="modal" data-bs-target="#modal2" data-bs-dismiss="modal">Pagar en Cuotas</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
-            <section class="modal-dialog modal-lg">
-                <article class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="modal2Label">Modal 2</h4>
-                    </div>
-                    <article class="modal-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Foto</th>
-                                    <th>Producto</th>
-                                    <th>Precio</th>
-                                    <th>Interés</th>
-                                    <th>P/F con Interés</th>
-                                    <th>Eliminar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><img class="icon-product" src="assets/js.png" alt="#"></td>
-                                    <td>Producto 1</td>
-                                    <td>$100.00</td>
-                                    <td>5%</td>
-                                    <td>$105.00</td>
-                                    <td>
-                                        <button class="btn btn-danger">Eliminar</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <button type="button" class="btn btn-success mt-3">Comprar</button>
-                        <button type="button" class="btn btn-danger mt-3 ms-2 float-end" data-bs-dismiss="modal">Cerrar</button>
-                    </article>
+                    <section class="card-body">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="usuario" class="form-label">Usuario</label>
+                                <input type="text" class="form-control" id="user" name="usuario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contrasena" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="contrasena" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Iniciar Sesión</button>
+                            </div>
+                        </form>
+                    </section>
                 </article>
             </section>
         </section>
-    </section>
-</nav>
-<!-- ----------------------- INICIO DEL MAIN CONTENT ----------------------- -->
-<main class="container-fluid">
-    <section class="row">
-        <!-- ------------------ INCIO DEL ASIDE PARA LOS FILTROS ------------------- -->
-        <aside class="col-md-3 bg-light p-3">
-            <section>
-                <h5>Filtrado</h5>
-                <article class="form-check">
-                    <input class="form-check-input" type="checkbox" id="filtradoAZ">
-                    <label class="form-check-label" for="filtradoAZ">A-Z</label>
-                </article>
-                <article class="form-check">
-                    <input class="form-check-input" type="checkbox" id="filtradoEnvioGratis">
-                    <label class="form-check-label" for="filtradoEnvioGratis">Envío Gratis</label>
-                </article>
-                <article class="form-check">
-                    <input class="form-check-input" type="checkbox" id="filtradoLlegaHoy">
-                    <label class="form-check-label" for="filtradoLlegaHoy">Llega Hoy</label>
-                </article>
-            </section>
-            <hr>
-            <section>
-                <h5>Marcas</h5>
-                <article class="form-check">
-                    <input class="form-check-input" type="checkbox" id="marcaRedragon">
-                    <label class="form-check-label" for="marcaRedragon">Redragon</label>
-                </article>
-                <article class="form-check">
-                    <input class="form-check-input" type="checkbox" id="marcaLogitech">
-                    <label class="form-check-label" for="marcaLogitech">Logitech</label>
-                </article>
-                <article class="form-check">
-                    <input class="form-check-input" type="checkbox" id="marcaHyperX">
-                    <label class="form-check-label" for="marcaHyperX">HyperX</label>
-                </article>
-            </section>
-            <hr>
-            <section>
-                <h5>Rango de precio</h5>
-                <article class="mb-3">
-                    <label for="precioRange" class="form-label"></label>
-                    <input type="range" class="form-range" id="precioRange" value="0" step="1">
-                </article>
-                <p>Precio seleccionado: <span id="precioOutput">0</span></p>
-            </section>
-            <button type="button" class="btn btn-primary">Aplicar Filtros</button>
-        </aside>
-
-        <!-- ----------- BARRA DE BUSQUEDA Y LAS CATEGORÍAS ----------- -->
-
-        <section class="col-md-9">
-            <section class="container mt-3" id="categoria-container"> </section>
-
-            <!-- ---------------- PRODUCTOS DE LA TIENDA ----------------- -->
-
-            <div class="container mt-3">
-                <div class="row" id="productos-container"> </div>
-            </div>
-        </section>
-    </section>
-</main>
-<!-- --------------------- BOOTSTRAP JS Y DEPENDENCIAS --------------------- -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
