@@ -2,15 +2,15 @@ const iniciarSesion = () => {
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
 
-    email && password
-        ? (guardarCredencialesEnLocalStorage(email, password), window.location.href = 'ecommerce.html')
-        : alert('Por favor, ingresa un correo y una contraseña');
+    const credenciales = email && password ? { email, password } : null;
+    credenciales
+    ? (guardarCredencialesEnLocalStorage(credenciales), (window.location.href = 'ecommerce.html'))
+    : alert('Por favor, ingresa un correo y una contraseña');
 };
 
-const guardarCredencialesEnLocalStorage = (email, password) => (
-    localStorage.setItem('email', email),
-    localStorage.setItem('password', password)
-);
+const guardarCredencialesEnLocalStorage = (credenciales) => {
+    localStorage.setItem('credenciales', JSON.stringify(credenciales));
+};
 
 document.querySelector('#loginForm').addEventListener('submit', (event) => {
     event.preventDefault();

@@ -48,17 +48,16 @@ const comprar = () => {
 const formatearNumero = (numero, decimales) => { return numero.toFixed(decimales).replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
 const eliminarDelCarrito = (eliminarIndex) => carrito[eliminarIndex] ? (carrito.splice(eliminarIndex, 1), actualizarCarrito()) : null;
 
-const mostrarProductos = (producto, productoIndex) => {
+const mostrarProductos = ({ imagen, marca, nombre, precio }, productoIndex) => {
     const container = document.querySelector('#productos-container');
-
     container.innerHTML += /*html*/ `
         <div class="col-md-3 mb-3">
             <div class="card h-100">
-                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                <img src="${imagen}" class="card-img-top" alt="${nombre}">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">${producto.marca}</h5>
-                    <p class="card-text">${producto.nombre}</p>
-                    <p class="card-text">Precio: $${producto.precio.toFixed(3)}</p>
+                    <h5 class="card-title">${marca}</h5>
+                    <p class="card-text">${nombre}</p>
+                    <p class="card-text">Precio: $${precio.toFixed(3)}</p>
                     <button class="btn btn-primary mt-auto" data-index='${productoIndex}'>Agregar al carrito</button>
                 </div>
             </div>
@@ -75,7 +74,7 @@ const filtrarProductos = () => {
         (categoriaSeleccionada === 'Todos' || producto.categoria === categoriaSeleccionada) &&
         (producto.marca.trim().toLowerCase().includes(textoBusqueda) || producto.nombre.toLowerCase().includes(textoBusqueda))
     );
-    productosFiltrados.forEach((producto, index) => { mostrarProductos(producto, index); });
+    productosFiltrados.forEach((producto, index) => { mostrarProductos({...producto }, index); });
 };
 
 document.addEventListener("DOMContentLoaded", () => {
