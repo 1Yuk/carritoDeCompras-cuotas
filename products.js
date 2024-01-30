@@ -115,3 +115,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.querySelector('#comprar-btn').addEventListener('click', comprar);
+
+document.querySelector('#cerrarSesionButton').addEventListener('click', () => {
+    localStorage.clear();
+    window.location.href = 'index.html';
+});

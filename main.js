@@ -12,7 +12,7 @@ const guardarCredencialesEnLocalStorage = (email, password) => (
     localStorage.setItem('password', password)
 );
 
-document.querySelector('#loginForm').addEventListener('submit', function(event) {
+document.querySelector('#loginForm').addEventListener('submit', (event) => {
     event.preventDefault();
     iniciarSesion();
 });
