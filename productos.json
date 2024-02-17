@@ -1,0 +1,74 @@
+[
+    {
+        "marca": "Redragon",
+        "nombre": "kumara k552",
+        "categoria": "Teclado",
+        "precio": 65.495,
+        "imagen": "./assets/redragonTeclado.webp",
+        "envioGratis": false,
+        "llegaHoy": true
+    },
+    {
+        "marca": "HyperX",
+        "nombre": "Alloy Origins QWERTY",
+        "categoria": "Teclado",
+        "precio": 122.352,
+        "imagen": "./assets/hyperxTeclado.webp",
+        "envioGratis": true,
+        "llegaHoy": false
+    },
+    {
+        "marca": "Logitech",
+        "nombre": "G Serie G G915 TKL QWERTY GL",
+        "categoria": "Teclado",
+        "precio": 255.869,
+        "imagen": "./assets/tecladoLogitech.webp",
+        "envioGratis": false,
+        "llegaHoy": true
+    },
+    {
+        "marca": "HyperX",
+        "nombre": "Cloud II Wireless HHSC2X-BA",
+        "categoria": "Auriculares",
+        "precio": 329.999,
+        "imagen": "./assets/hyperxAuriculares.webp",
+        "envioGratis": true,
+        "llegaHoy": true
+    },
+    {
+        "marca": "Logitech",
+        "nombre": "G Series G733 KDA",
+        "categoria": "Auriculares",
+        "precio": 195.999,
+        "imagen": "./assets/logitechAuriculares.webp",
+        "envioGratis": true,
+        "llegaHoy": false
+    },
+    {
+        "marca": "Samsung",
+        "nombre": "Monitor G4 25\" 240hz 1ms",
+        "categoria": "Pantallas",
+        "precio": 438.629,
+        "imagen": "./assets/samsungMonitor-1.webp",
+        "envioGratis": false,
+        "llegaHoy": true
+    },
+    {
+        "marca": "Asus",
+        "nombre": "Monitor Vg248qg Pantalla 24\" 240hz 3ms",
+        "categoria": "Pantallas",
+        "precio": 269.999,
+        "imagen": "./assets/asusMonitor-1.webp",
+        "envioGratis": true,
+        "llegaHoy": false
+    },
+    {
+        "marca": "Asus TUF",
+        "nombre": "Monitor curvo VG24VQE Pantalla 23.6\" 144hz 1ms",
+        "categoria": "Pantallas",
+        "precio": 387.333,
+        "imagen": "./assets/asusMonitor-2.webp",
+        "envioGratis": false,
+        "llegaHoy": true
+    }
+]
