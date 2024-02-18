@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "marca": "Redragon",
         "nombre": "kumara k552",
         "categoria": "Teclado",
@@ -9,6 +10,7 @@
         "llegaHoy": true
     },
     {
+        "id": 2,
         "marca": "HyperX",
         "nombre": "Alloy Origins QWERTY",
         "categoria": "Teclado",
@@ -18,6 +20,7 @@
         "llegaHoy": false
     },
     {
+        "id": 3,
         "marca": "Logitech",
         "nombre": "G Serie G G915 TKL QWERTY GL",
         "categoria": "Teclado",
@@ -27,6 +30,7 @@
         "llegaHoy": true
     },
     {
+        "id": 4,
         "marca": "HyperX",
         "nombre": "Cloud II Wireless HHSC2X-BA",
         "categoria": "Auriculares",
@@ -36,6 +40,7 @@
         "llegaHoy": true
     },
     {
+        "id": 5,
         "marca": "Logitech",
         "nombre": "G Series G733 KDA",
         "categoria": "Auriculares",
@@ -45,6 +50,7 @@
         "llegaHoy": false
     },
     {
+        "id": 6,
         "marca": "Samsung",
         "nombre": "Monitor G4 25\" 240hz 1ms",
         "categoria": "Pantallas",
@@ -54,6 +60,7 @@
         "llegaHoy": true
     },
     {
+        "id": 7,
         "marca": "Asus",
         "nombre": "Monitor Vg248qg Pantalla 24\" 240hz 3ms",
         "categoria": "Pantallas",
@@ -63,6 +70,7 @@
         "llegaHoy": false
     },
     {
+        "id": 8,
         "marca": "Asus TUF",
         "nombre": "Monitor curvo VG24VQE Pantalla 23.6\" 144hz 1ms",
         "categoria": "Pantallas",

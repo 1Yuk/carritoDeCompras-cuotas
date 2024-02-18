@@ -5,6 +5,12 @@ const agregarAlCarrito = (producto) => {
     if (producto && typeof producto.precio === 'number') {
         carrito.push(producto);
         actualizarCarrito();
+
+        Toastify({
+            text: `Se ha agregado ${producto.nombre} 🛒`,
+            duration: 1500,
+            gravity: "bottom"
+        }).showToast();
     }
 };
 
@@ -21,12 +27,20 @@ const actualizarCarrito = () => {
                 <td>${producto.marca}</td>
                 <td>${producto.categoria}</td>
                 <td>$${producto.precio.toFixed(3)}</td>
-                <td><button type='button' class='btn btn-danger' data-index='${index}'>Eliminar</button></td>
+                <td><button type='button' class='btn btn-danger' data-id='${index}'>Eliminar</button></td>
             </tr>
         `;
         tablaCarrito.innerHTML += modal;
     });
     cantidadCarrito.textContent = carrito.length;
+
+    const eliminarBtn = document.querySelectorAll('#cart-body .btn-danger');
+    eliminarBtn.forEach((button) => {
+        button.addEventListener('click', () => {
+            const eliminarIndex = parseInt(button.getAttribute('data-id'));
+            eliminarDelCarrito(eliminarIndex);
+        });
+    });
 };
 
 const comprar = () => {
@@ -40,11 +54,9 @@ const comprar = () => {
     carrito.length = 0;
     actualizarCarrito();
 };
-
 const formatearNumero = (numero, decimales) => {
     return numero.toFixed(decimales).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
-
 const eliminarDelCarrito = (eliminarIndex) => {
     if (carrito[eliminarIndex]) {
         carrito.splice(eliminarIndex, 1);
@@ -52,7 +64,7 @@ const eliminarDelCarrito = (eliminarIndex) => {
     }
 };
 
-const mostrarProductos = ({ imagen, marca, nombre, precio }, productoIndex) => {
+const mostrarProductos = ({ imagen, marca, nombre, precio, id }) => {
     const container = document.querySelector('#productos-container');
     container.innerHTML +=  /*html*/ `
         <div class="col-md-3 mb-3">
@@ -62,7 +74,7 @@ const mostrarProductos = ({ imagen, marca, nombre, precio }, productoIndex) => {
                     <h5 class="card-title">${marca}</h5>
                     <p class="card-text">${nombre}</p>
                     <p class="card-text">Precio: $${precio.toFixed(3)}</p>
-                    <button class="btn btn-primary mt-auto" data-index='${productoIndex}'>Agregar al carrito</button>
+                    <button class="btn btn-primary mt-auto" data-id='${id}'>Agregar al carrito</button>
                 </div>
             </div>
         </div>
@@ -71,19 +83,12 @@ const mostrarProductos = ({ imagen, marca, nombre, precio }, productoIndex) => {
 
 const cargarProductosDesdeAPI = async () => {
     const url = 'productos.json';
-
     try {
         const respuesta = await fetch(url);
-
         if (respuesta.ok) {
             productos = await respuesta.json();
-            productos.forEach((producto, index) => {
-                mostrarProductos(producto, index);
-            });
-            
-            const agregarCarritoButtons = document.querySelectorAll('[data-index]');
-            agregarCarritoButtons.forEach((button) => {
-                button.addEventListener('click', () => agregarAlCarrito(productos[button.getAttribute('data-index')]));
+            productos.forEach((producto) => {
+                mostrarProductos(producto);
             });
         } else {
             console.error('Error al obtener productos desde la API:', respuesta.status);

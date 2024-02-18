@@ -1,35 +1,8 @@
-const aplicarFiltros = () => {
-    const obtenerElemento = (id) => document.querySelector(`#${id}`);
-    const categoriaSeleccionada = obtenerElemento('categoria').value;
-    const textoBusqueda = obtenerElemento('barraBusqueda').value.toLowerCase();
-    const envioGratisSeleccionado = obtenerElemento('envioGratis').checked;
-    const llegaHoySeleccionado = obtenerElemento('llegaHoy').checked;
-    const ordenAZSeleccionado = obtenerElemento('ordenAZ').checked;
-
-    const rangoPrecioSeleccionado = parseFloat(obtenerElemento('rangoPrecio').value);
-    document.getElementById('precioOutput').textContent = rangoPrecioSeleccionado.toFixed(3);
-
-    const marcasSeleccionadas = ['Redragon', 'HyperX', 'Logitech'].filter(marca => obtenerElemento(`marca${marca}`).checked);
-
-    const container = obtenerElemento('productos-container');
-    container.innerHTML = '';
-
-    const productosFiltrados = productos.filter(producto =>
-        (categoriaSeleccionada === 'Todos' || producto.categoria === categoriaSeleccionada) &&
-        (marcasSeleccionadas.length === 0 || marcasSeleccionadas.includes(producto.marca)) &&
-        (producto.marca.trim().toLowerCase().includes(textoBusqueda) || producto.nombre.toLowerCase().includes(textoBusqueda)) &&
-        (!envioGratisSeleccionado || producto.envioGratis) &&
-        (!llegaHoySeleccionado || producto.llegaHoy) &&
-        (producto.precio <= rangoPrecioSeleccionado)
-    );
-
-    ordenAZSeleccionado ? productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre)) : null;
-    productosFiltrados.forEach((producto, index) => mostrarProductos({ ...producto }, index));
-};
-
 document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector('#productos-container');
-    const categoriaContainer = document.querySelector('#categoria-container');
+    const obtenerElemento = (id) => document.querySelector(`#${id}`);
+    const container = obtenerElemento('productos-container');
+    const categoriaContainer = obtenerElemento('categoria-container');
+    
     categoriaContainer.innerHTML += /*html*/ `
         <article class="row">
             <div class="col-md-6">
@@ -52,20 +25,56 @@ document.addEventListener("DOMContentLoaded", () => {
         </article>
     `;
 
-    document.querySelector('#barraBusqueda').addEventListener('input', aplicarFiltros);
-    document.querySelector('#categoria').addEventListener('change', aplicarFiltros);
+    const actualizarPrecioOutput = (valor) => obtenerElemento('precioOutput').textContent = valor.toFixed(3);
+    const aplicarFiltros = () => {
+        const categoriaSeleccionada = obtenerElemento('categoria').value;
+        const textoBusqueda = obtenerElemento('barraBusqueda').value.toLowerCase();
+        const envioGratisSeleccionado = obtenerElemento('envioGratis').checked;
+        const llegaHoySeleccionado = obtenerElemento('llegaHoy').checked;
+        const ordenAZSeleccionado = obtenerElemento('ordenAZ').checked;
+        const rangoPrecioSeleccionado = parseFloat(obtenerElemento('rangoPrecio').value);
+        actualizarPrecioOutput(rangoPrecioSeleccionado);
 
-    document.querySelector('#envioGratis').addEventListener('change', aplicarFiltros);
-    document.querySelector('#llegaHoy').addEventListener('change', aplicarFiltros);
-    document.querySelector('#ordenAZ').addEventListener('change', aplicarFiltros);
-    document.querySelector('#marcaRedragon').addEventListener('change', aplicarFiltros);
-    document.querySelector('#marcaHyperX').addEventListener('change', aplicarFiltros);
-    document.querySelector('#marcaLogitech').addEventListener('change', aplicarFiltros);
+        const marcasSeleccionadas = ['Redragon', 'HyperX', 'Logitech'].filter(marca => obtenerElemento(`marca${marca}`).checked);
+        container.innerHTML = '';
+        const productosFiltrados = productos.filter(producto =>
+            (categoriaSeleccionada === 'Todos' || producto.categoria === categoriaSeleccionada) &&
+            (marcasSeleccionadas.length === 0 || marcasSeleccionadas.includes(producto.marca)) &&
+            (producto.marca.trim().toLowerCase().includes(textoBusqueda) || producto.nombre.toLowerCase().includes(textoBusqueda)) &&
+            (!envioGratisSeleccionado || producto.envioGratis) &&
+            (!llegaHoySeleccionado || producto.llegaHoy) &&
+            (producto.precio <= rangoPrecioSeleccionado)
+        );
 
-    document.querySelector('#rangoPrecio').addEventListener('input', aplicarFiltros);
+        ordenAZSeleccionado && productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        productosFiltrados.forEach((producto, index) => mostrarProductos({ ...producto }, index));
+    };
+
+    const agregarEvento = (id, evento, callback) => obtenerElemento(id).addEventListener(evento, callback);
+
+    agregarEvento('barraBusqueda', 'input', aplicarFiltros);
+    agregarEvento('categoria', 'change', aplicarFiltros);
+    agregarEvento('envioGratis', 'change', aplicarFiltros);
+    agregarEvento('llegaHoy', 'change', aplicarFiltros);
+    agregarEvento('ordenAZ', 'change', aplicarFiltros);
+    agregarEvento('marcaRedragon', 'change', aplicarFiltros);
+    agregarEvento('marcaHyperX', 'change', aplicarFiltros);
+    agregarEvento('marcaLogitech', 'change', aplicarFiltros);
+    agregarEvento('rangoPrecio', 'input', aplicarFiltros);
 
     productos.forEach((producto, index) => mostrarProductos(producto, index));
+    container.addEventListener('click', evento => {
+        const botonAgregar = evento.target.closest('.btn-primary');
+        if (botonAgregar) {
+            const productId = botonAgregar.getAttribute('data-id');
+            const selectedProduct = productos.find(producto => producto.id == productId);
+            agregarAlCarrito(selectedProduct);
+        }
+    });
 
-    container.addEventListener('click', (evento) => evento.target.classList.contains('btn') && agregarAlCarrito(evento.target.getAttribute('data-index')));
-    document.querySelector('#cart-body').addEventListener('click', (evento) => evento.target.classList.contains('btn') && eliminarDelCarrito(evento.target.getAttribute('data-index')));
+    obtenerElemento('cart-body').addEventListener('click', (evento) => {
+        if (evento.target.classList.contains('btn')) {
+            eliminarDelCarrito(evento.target.getAttribute('data-index'));
+        }
+    });
 });
